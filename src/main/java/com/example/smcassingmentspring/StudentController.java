@@ -15,23 +15,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 @Controller
-public class BookController {
+public class StudentController {
     @Autowired
-    BookRepository bookRepository;
+    StudentRepository studentRepository;
 
-    @GetMapping("/bookForm")
-    public String bookForm(Model model) {
-        model.addAttribute("book", new Book());
-        return "bookForm";
+    @GetMapping("/studentForm")
+    public String studentForm(Model model) {
+        model.addAttribute("student", new Student());
+        return "studentForm";
     }
 
-    @PostMapping("/bookForm")
-    public void submitBook(@ModelAttribute Book book, Model model) {
-        System.out.println("Book Name: " + book.getBookName());
-        Book toSave = new Book(book.getBookName());
-        System.out.println("Created book entity");
-        toSave = bookRepository.save(toSave);
-        System.out.println("Book Saved");
+    @PostMapping("/studentForm")
+    public void submitStudent(@ModelAttribute Student student, Model model) {
+        studentRepository.save(new Student(student.getStudentName()));
     }
 }
-

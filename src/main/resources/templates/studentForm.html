@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Book form</title>
+    <title>Student Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Enter the books details</h1>
-<form action="#" th:action="@{/bookForm}" th:object="${book}" method="post">
-    <p>Book Name: <input type="text" th:field="*{bookName}" /></p>
+<h1>Enter the students details</h1>
+<form action="#" th:action="@{/studentForm}" th:object="${student}" method="post">
+    <p>Student name: <input type="text" th:field="*{studentName}" /></p>
     <p><input type="submit" value="Submit" /></p>
 </form>
 </body>

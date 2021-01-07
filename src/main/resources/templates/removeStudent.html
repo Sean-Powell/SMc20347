@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Students</title>
+</head>
+<body>
+<h1>Choose a student to remove:</h1>
+
+<form method="post" th:object="${stud}" th:action="@{/removeStudent}">
+    <select th:field="*{studentID}">
+        <option th:each="student : ${studentNames}" th:value="${student.getStudentID()}" th:text="${student.studentName}"></option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Confirm Student</button>
+</form>
+
+</body>
+</html>

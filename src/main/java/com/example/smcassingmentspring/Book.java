@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bookid;
+    private long bookid;
     @Column(name = "bookname")
     private String bookName;
 
@@ -32,11 +32,11 @@ public class Book {
         this.bookName = bookName;
     }
 
-    public int getBookid() {
+    public long getBookid() {
         return bookid;
     }
 
-    public void setBookid(int bookid) {
+    public void setBookid(long bookid) {
         this.bookid = bookid;
     }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan a book</title>
+</head>
+<body>
+<h1>Enter the details of the book loan:</h1>
+
+<form method="post" th:object="${loan}" th:action="@{/loanBook}">
+    <select th:field="*{studentID}">
+        <option th:each="student : ${studentList}" th:value="${student.getStudentID()}" th:text="${student.getStudentName()}"></option>
+    </select>
+    <br>
+    <br>
+    <select th:field="*{bookID}">
+        <option th:each="book : ${bookList}" th:value="${book.getBookid()}" th:text="${book.getBookName()}"></option>
+    </select>
+    <br>
+    <br>
+    <input type="date" th:field="${loan.expirationDate}" >
+    <br>
+    <br>
+    <button type="submit">Confirm Loan</button>
+</form>
+
+</body>
+</html>

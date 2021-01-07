@@ -13,9 +13,11 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "studentid")
-    private int studentID;
+    public Long studentID;
     @Column(name = "studentname")
-    private String studentName;
+    public String studentName;
+    @Column(name = "removed")
+    public boolean removed;
 
     public Student(){
 
@@ -34,12 +36,20 @@ public class Student {
         this.studentName = studentName;
     }
 
-    public int getStudentID() {
+    public Long getStudentID() {
         return studentID;
     }
 
-    public void setStudentID(int studentID) {
+    public void setStudentID(Long studentID) {
         this.studentID = studentID;
+    }
+
+    public boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(boolean removed) {
+        this.removed = removed;
     }
 }
 

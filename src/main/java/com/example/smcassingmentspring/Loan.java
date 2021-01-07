@@ -1,11 +1,15 @@
 package com.example.smcassingmentspring;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -14,13 +18,14 @@ public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loanid")
-    private int loanID;
+    public long loanID;
     @Column(name = "bookid")
-    private int bookID;
+    public int bookID;
     @Column(name = "studentid")
-    private int studentID;
+    public int studentID;
     @Column(name = "loanexpiration")
-    private Date expirationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    public Date expirationDate;
 
     public int getBookID() {
         return bookID;
@@ -30,7 +35,7 @@ public class Loan {
         return studentID;
     }
 
-    public int getLoanID() {
+    public long getLoanID() {
         return loanID;
     }
 
@@ -52,5 +57,28 @@ public class Loan {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public Loan(){
+
+    }
+
+    public Loan(int bookID, int studentID, Date expirationDate){
+        super();
+        this.bookID = bookID;
+        this.studentID = studentID;
+        this.expirationDate = expirationDate;
+
+    }
+
+    public Loan(int bookID, int studentID, String dateString){
+        super();
+        this.bookID = bookID;
+        this.studentID = studentID;
+        try {
+            this.expirationDate = new SimpleDateFormat("yyyy-MM-dd").parse(dateString);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
     }
 }

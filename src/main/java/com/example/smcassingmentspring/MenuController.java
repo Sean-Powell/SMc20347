@@ -5,8 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MenuController {
-    @GetMapping("/menu")
-    public String getMenu(){
-        return "menu";
+    @GetMapping("/adminMenu")
+    public String getAdminMenu(){
+        return "adminMenu";
+    }
+
+    @GetMapping("/studentMenu")
+    public String getStudentMenu(){
+        return "studentMenu";
     }
 }

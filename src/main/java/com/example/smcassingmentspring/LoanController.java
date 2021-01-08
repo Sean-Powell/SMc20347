@@ -9,13 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
-public class LoanController {
+public class LoanController{
     @Autowired
     StudentRepository studentRepository;
 
@@ -53,6 +51,6 @@ public class LoanController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String formattedDate = sdf.format(loan.getExpirationDate());
         loanRepository.save(new Loan((int) loan.getBookID(), (int) loan.getStudentID(), formattedDate));
-        return "menu";
+        return "studentMenu";
     }
 }

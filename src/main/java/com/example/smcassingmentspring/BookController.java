@@ -22,7 +22,7 @@ public class BookController {
     public String submitBook(@ModelAttribute Book book, Model model) {
         Book toSave = new Book(book.getBookName());
         toSave = bookRepository.save(toSave);
-        return "menu";
+        return "adminMenu";
     }
 }
 

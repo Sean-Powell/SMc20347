@@ -17,15 +17,15 @@ public class StudentController {
     StudentRepository studentRepository;
 
     @GetMapping("/studentForm")
-    public String studentForm(Model model) {
+    public String addStudentForm(Model model) {
         model.addAttribute("student", new Student());
         return "studentForm";
     }
 
     @PostMapping("/studentForm")
-    public String submitStudent(@ModelAttribute Student student, Model model) {
+    public String submitAddStudent(@ModelAttribute Student student, Model model) {
         studentRepository.save(new Student(student.getStudentName()));
-        return "menu";
+        return "adminMenu";
     }
 
     @GetMapping("/removeStudent")
@@ -50,6 +50,6 @@ public class StudentController {
             s.setRemoved(true);
             studentRepository.save(s);
         }
-        return "menu";
+        return "adminMenu";
     }
 }
